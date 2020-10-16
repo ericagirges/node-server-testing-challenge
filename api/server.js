@@ -7,10 +7,10 @@ const server = express();
 server.use(express.json());
 
 server.get("/", (req, res) => {
-  res.status(200).json({ api: "up" });
+  res.status(200).json({ api: "Sailor Scouts API" });
 });
 
-server.get("/sailorScouts", (req, res) => {
+server.get("/sailor-scouts", (req, res) => {
     SailorScouts.getAll()
     .then(sailorScouts => {
       res.status(200).json(sailorScouts);
