@@ -8,8 +8,17 @@ module.exports = {
   findById,
 };
 
+function findById(id) {
+    return db("sailorScouts").where({ id }).first();
+  }
+
 async function add(sailorScout) {
-  return null;
+  return db("sailorScouts")
+  .insert(sailorScout, "id")
+  .then(ids => {
+      const id = ids[0];
+      return findById(id);
+  });
 }
 
 async function update(id, changes) {
@@ -24,6 +33,3 @@ function getAll() {
   return db('sailorScouts');
 }
 
-function findById(id) {
-  return null;
-}
